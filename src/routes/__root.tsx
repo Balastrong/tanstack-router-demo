@@ -19,6 +19,11 @@ export const Route = createRootRoute({
             {({ isActive }) => <>Profile {isActive && "~"}</>}
           </Link>
         </li>
+        <li>
+          <Link to="/pokemon" activeProps={activeProps}>
+            Pokemons
+          </Link>
+        </li>
       </ul>
       <Outlet />
     </>
