@@ -1,3 +1,8 @@
+import { Checkbox } from "@/components/ui/checkbox";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import Typography from "@/components/ui/typography";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import * as v from "valibot";
 
@@ -31,35 +36,43 @@ function Search() {
 
   return (
     <div>
-      <h2>Search</h2>
-      You searched for:{" "}
-      <input
-        value={query}
-        onChange={(e) => {
-          updateFilters("query", e.target.value);
-        }}
-      />
-      <input
-        type="checkbox"
-        checked={hasDiscount}
-        onChange={(e) => updateFilters("hasDiscount", e.target.checked)}
-      />
-      <select
-        multiple
-        onChange={(e) => {
-          updateFilters(
-            "categories",
-            Array.from(e.target.selectedOptions, (option) => option.value)
-          );
-        }}
-        value={categories}
-      >
-        {["electronics", "clothing", "books", "toys"].map((category) => (
-          <option key={category} value={category}>
-            {category}
-          </option>
-        ))}
-      </select>
+      <Typography variant={"h2"}>Search</Typography>
+      <div className="flex gap-4 flex-col w-fit mb-4">
+        <div>
+          <Label>Query</Label>
+          <Input
+            value={query}
+            onChange={(e) => {
+              updateFilters("query", e.target.value);
+            }}
+            size={30}
+          />
+        </div>
+        <div className="flex items-center gap-1">
+          <Checkbox
+            checked={hasDiscount}
+            onCheckedChange={(checked) => updateFilters("hasDiscount", checked)}
+            id="discount"
+          />
+          <Label htmlFor="discount" className="cursor-pointer">
+            Has Discount
+          </Label>
+        </div>
+        <div>
+          <Label>Category</Label>
+          <ToggleGroup
+            type="multiple"
+            value={categories}
+            variant={"outline"}
+            size={"sm"}
+            onValueChange={(values) => updateFilters("categories", values)}
+          >
+            {["electronics", "clothing", "books", "toys"].map((category) => (
+              <ToggleGroupItem value={category}>{category}</ToggleGroupItem>
+            ))}
+          </ToggleGroup>
+        </div>
+      </div>
       <pre>{JSON.stringify({ query, hasDiscount, categories }, null, 2)}</pre>
     </div>
   );
