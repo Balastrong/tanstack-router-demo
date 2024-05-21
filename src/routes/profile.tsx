@@ -1,3 +1,4 @@
+import Typography from "@/components/ui/typography";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/profile")({
@@ -9,5 +10,13 @@ export const Route = createFileRoute("/profile")({
       });
     }
   },
-  component: () => <div>Hello /profile!</div>,
+  component: Profile,
 });
+
+function Profile() {
+  return (
+    <div>
+      <Typography variant={"h2"}>Profile</Typography>
+    </div>
+  );
+}

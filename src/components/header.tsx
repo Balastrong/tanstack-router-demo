@@ -18,7 +18,7 @@ export const Header = () => {
       >
         TanStack Router
       </Typography>
-      <ul className="flex flex-wrap gap-1">
+      <ul className="flex flex-wrap gap-1 justify-center">
         <li>
           <Link className={className} to="/" activeProps={activeProps}>
             Home

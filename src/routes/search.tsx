@@ -68,7 +68,9 @@ function Search() {
             onValueChange={(values) => updateFilters("categories", values)}
           >
             {["electronics", "clothing", "books", "toys"].map((category) => (
-              <ToggleGroupItem value={category}>{category}</ToggleGroupItem>
+              <ToggleGroupItem key={category} value={category}>
+                {category}
+              </ToggleGroupItem>
             ))}
           </ToggleGroup>
         </div>
