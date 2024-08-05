@@ -13,6 +13,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as StepsImport } from './routes/steps'
 import { Route as SearchImport } from './routes/search'
 import { Route as ProfileImport } from './routes/profile'
 import { Route as LoginImport } from './routes/login'
@@ -36,6 +37,11 @@ import { Route as hiddenFolderLayoutsHiddenLayoutBarImport } from './routes/(hid
 const hiddenFolderLayoutsImport = createFileRoute('/(hidden-folder)/layouts')()
 
 // Create/Update Routes
+
+const StepsRoute = StepsImport.update({
+  path: '/steps',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const SearchRoute = SearchImport.update({
   path: '/search',
@@ -172,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SearchImport
       parentRoute: typeof rootRoute
     }
+    '/steps': {
+      id: '/steps'
+      path: '/steps'
+      fullPath: '/steps'
+      preLoaderRoute: typeof StepsImport
+      parentRoute: typeof rootRoute
+    }
     '/(hidden-folder)/first-level': {
       id: '/first-level'
       path: '/first-level'
@@ -276,6 +289,7 @@ export const routeTree = rootRoute.addChildren({
   LoginRoute,
   ProfileRoute,
   SearchRoute,
+  StepsRoute,
   hiddenFolderFirstLevelRoute,
   PokemonIdRoute,
   PokemonIndexRoute,
@@ -308,6 +322,7 @@ export const routeTree = rootRoute.addChildren({
         "/login",
         "/profile",
         "/search",
+        "/steps",
         "/first-level",
         "/pokemon/$id",
         "/pokemon/",
@@ -333,6 +348,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/search": {
       "filePath": "search.tsx"
+    },
+    "/steps": {
+      "filePath": "steps.tsx"
     },
     "/first-level": {
       "filePath": "(hidden-folder)/first-level.tsx"

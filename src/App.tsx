@@ -1,12 +1,24 @@
-import { RouterProvider, createRouter } from "@tanstack/react-router";
+import {
+  RouterProvider,
+  createRouteMask,
+  createRouter,
+} from "@tanstack/react-router";
 import "./App.css";
 import { useAuth } from "./hooks/useAuth";
 import { routeTree } from "./routeTree.gen";
+
+const stepsMask = createRouteMask({
+  routeTree,
+  from: "/steps",
+  to: "/steps",
+  search: (prev) => ({ ...prev, step: undefined }),
+});
 
 const router = createRouter({
   routeTree,
   context: { authentication: undefined! },
   defaultNotFoundComponent: () => <div>Global Not Found :(</div>,
+  routeMasks: [stepsMask],
 });
 
 declare module "@tanstack/react-router" {

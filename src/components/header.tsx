@@ -52,19 +52,20 @@ export const Header = () => {
         <li>
           <Link
             className={className}
-            to="/first-level"
+            to="/layouts/visibleLayout"
             activeProps={activeProps}
           >
-            First level
+            Layouts
           </Link>
         </li>
         <li>
           <Link
             className={className}
-            to="/layouts/visibleLayout"
+            to="/steps"
             activeProps={activeProps}
+            search={{ username: "Leonardo" }}
           >
-            Layouts
+            Steps
           </Link>
         </li>
       </ul>
