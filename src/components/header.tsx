@@ -1,13 +1,5 @@
-import { Link } from "@tanstack/react-router";
+import { CustomLink } from "./customLink";
 import Typography from "./ui/typography";
-
-const activeProps = {
-  style: {
-    color: "hsl(142.1 70.6% 45.3%)",
-  },
-};
-
-const className = "font-bold text-muted-foreground mx-1";
 
 export const Header = () => {
   return (
@@ -20,53 +12,32 @@ export const Header = () => {
       </Typography>
       <ul className="flex flex-wrap gap-1 justify-center">
         <li>
-          <Link className={className} to="/" activeProps={activeProps}>
-            Home
-          </Link>
+          <CustomLink to="/">Home</CustomLink>
         </li>
         <li>
-          <Link className={className} to="/profile" activeProps={activeProps}>
+          <CustomLink to="/profile">
             {({ isActive }) => <>Profile {isActive && "~"}</>}
-          </Link>
+          </CustomLink>
         </li>
         <li>
-          <Link className={className} to="/pokemon" activeProps={activeProps}>
-            Pokemons
-          </Link>
+          <CustomLink to="/pokemon">Pokemons</CustomLink>
         </li>
         <li>
-          <Link className={className} to="/search" activeProps={activeProps}>
-            Search
-          </Link>
+          <CustomLink to="/search">Search</CustomLink>
         </li>
         <li>
-          <Link className={className} to="/login" activeProps={activeProps}>
-            Login
-          </Link>
+          <CustomLink to="/login">Login</CustomLink>
         </li>
         <li>
-          <Link className={className} to="/dashboard" activeProps={activeProps}>
-            Dashboard
-          </Link>
+          <CustomLink to="/dashboard">Dashboard</CustomLink>
         </li>
         <li>
-          <Link
-            className={className}
-            to="/layouts/visibleLayout"
-            activeProps={activeProps}
-          >
-            Layouts
-          </Link>
+          <CustomLink to="/layouts/visibleLayout">Layouts</CustomLink>
         </li>
         <li>
-          <Link
-            className={className}
-            to="/steps"
-            activeProps={activeProps}
-            search={{ username: "Leonardo" }}
-          >
+          <CustomLink to="/steps" search={{ username: "Leonardo" }}>
             Steps
-          </Link>
+          </CustomLink>
         </li>
       </ul>
     </div>
