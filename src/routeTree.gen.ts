@@ -8,295 +8,388 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createFileRoute } from '@tanstack/react-router'
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as StepsRouteImport } from './routes/steps'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as PokemonIndexRouteImport } from './routes/pokemon/index'
+import { Route as PokemonIdRouteImport } from './routes/pokemon/$id'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as hiddenFolderFirstLevelRouteImport } from './routes/(hidden-folder)/first-level'
+import { Route as OneTwoThreeRouteImport } from './routes/one.two.three'
+import { Route as FooBarBazRouteImport } from './routes/foo/bar/baz'
+import { Route as hiddenFolderLayoutsVisibleLayoutRouteImport } from './routes/(hidden-folder)/layouts/visibleLayout'
+import { Route as hiddenFolderLayoutsHiddenLayoutRouteImport } from './routes/(hidden-folder)/layouts/_hiddenLayout'
+import { Route as hiddenFolderLayoutsVisibleLayoutFooRouteImport } from './routes/(hidden-folder)/layouts/visibleLayout/foo'
+import { Route as hiddenFolderLayoutsVisibleLayoutBarRouteImport } from './routes/(hidden-folder)/layouts/visibleLayout/bar'
+import { Route as hiddenFolderLayoutsHiddenLayoutFooRouteImport } from './routes/(hidden-folder)/layouts/_hiddenLayout/foo'
+import { Route as hiddenFolderLayoutsHiddenLayoutBarRouteImport } from './routes/(hidden-folder)/layouts/_hiddenLayout/bar'
 
-// Import Routes
-
-import { Route as rootRoute } from './routes/__root'
-import { Route as StepsImport } from './routes/steps'
-import { Route as SearchImport } from './routes/search'
-import { Route as ProfileImport } from './routes/profile'
-import { Route as LoginImport } from './routes/login'
-import { Route as AuthenticatedImport } from './routes/_authenticated'
-import { Route as IndexImport } from './routes/index'
-import { Route as PokemonIndexImport } from './routes/pokemon/index'
-import { Route as PokemonIdImport } from './routes/pokemon/$id'
-import { Route as AuthenticatedDashboardImport } from './routes/_authenticated/dashboard'
-import { Route as hiddenFolderFirstLevelImport } from './routes/(hidden-folder)/first-level'
-import { Route as OneTwoThreeImport } from './routes/one.two.three'
-import { Route as FooBarBazImport } from './routes/foo/bar/baz'
-import { Route as hiddenFolderLayoutsVisibleLayoutImport } from './routes/(hidden-folder)/layouts/visibleLayout'
-import { Route as hiddenFolderLayoutsHiddenLayoutImport } from './routes/(hidden-folder)/layouts/_hiddenLayout'
-import { Route as hiddenFolderLayoutsVisibleLayoutFooImport } from './routes/(hidden-folder)/layouts/visibleLayout/foo'
-import { Route as hiddenFolderLayoutsVisibleLayoutBarImport } from './routes/(hidden-folder)/layouts/visibleLayout/bar'
-import { Route as hiddenFolderLayoutsHiddenLayoutFooImport } from './routes/(hidden-folder)/layouts/_hiddenLayout/foo'
-import { Route as hiddenFolderLayoutsHiddenLayoutBarImport } from './routes/(hidden-folder)/layouts/_hiddenLayout/bar'
-
-// Create Virtual Routes
-
-const hiddenFolderLayoutsImport = createFileRoute('/(hidden-folder)/layouts')()
-
-// Create/Update Routes
-
-const StepsRoute = StepsImport.update({
+const StepsRoute = StepsRouteImport.update({
   id: '/steps',
   path: '/steps',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const SearchRoute = SearchImport.update({
+const SearchRoute = SearchRouteImport.update({
   id: '/search',
   path: '/search',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const ProfileRoute = ProfileImport.update({
+const ProfileRoute = ProfileRouteImport.update({
   id: '/profile',
   path: '/profile',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const LoginRoute = LoginImport.update({
+const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const AuthenticatedRoute = AuthenticatedImport.update({
+const AuthenticatedRoute = AuthenticatedRouteImport.update({
   id: '/_authenticated',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const IndexRoute = IndexImport.update({
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const hiddenFolderLayoutsRoute = hiddenFolderLayoutsImport.update({
-  id: '/(hidden-folder)/layouts',
-  path: '/layouts',
-  getParentRoute: () => rootRoute,
-} as any)
-
-const PokemonIndexRoute = PokemonIndexImport.update({
+const PokemonIndexRoute = PokemonIndexRouteImport.update({
   id: '/pokemon/',
   path: '/pokemon/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const PokemonIdRoute = PokemonIdImport.update({
+const PokemonIdRoute = PokemonIdRouteImport.update({
   id: '/pokemon/$id',
   path: '/pokemon/$id',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const AuthenticatedDashboardRoute = AuthenticatedDashboardImport.update({
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
-
-const hiddenFolderFirstLevelRoute = hiddenFolderFirstLevelImport.update({
+const hiddenFolderFirstLevelRoute = hiddenFolderFirstLevelRouteImport.update({
   id: '/(hidden-folder)/first-level',
   path: '/first-level',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const OneTwoThreeRoute = OneTwoThreeImport.update({
+const OneTwoThreeRoute = OneTwoThreeRouteImport.update({
   id: '/one/two/three',
   path: '/one/two/three',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const FooBarBazRoute = FooBarBazImport.update({
+const FooBarBazRoute = FooBarBazRouteImport.update({
   id: '/foo/bar/baz',
   path: '/foo/bar/baz',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
 const hiddenFolderLayoutsVisibleLayoutRoute =
-  hiddenFolderLayoutsVisibleLayoutImport.update({
-    id: '/visibleLayout',
-    path: '/visibleLayout',
-    getParentRoute: () => hiddenFolderLayoutsRoute,
+  hiddenFolderLayoutsVisibleLayoutRouteImport.update({
+    id: '/(hidden-folder)/layouts/visibleLayout',
+    path: '/layouts/visibleLayout',
+    getParentRoute: () => rootRouteImport,
   } as any)
-
 const hiddenFolderLayoutsHiddenLayoutRoute =
-  hiddenFolderLayoutsHiddenLayoutImport.update({
-    id: '/_hiddenLayout',
-    getParentRoute: () => hiddenFolderLayoutsRoute,
+  hiddenFolderLayoutsHiddenLayoutRouteImport.update({
+    id: '/(hidden-folder)/layouts/_hiddenLayout',
+    path: '/layouts',
+    getParentRoute: () => rootRouteImport,
   } as any)
-
 const hiddenFolderLayoutsVisibleLayoutFooRoute =
-  hiddenFolderLayoutsVisibleLayoutFooImport.update({
+  hiddenFolderLayoutsVisibleLayoutFooRouteImport.update({
     id: '/foo',
     path: '/foo',
     getParentRoute: () => hiddenFolderLayoutsVisibleLayoutRoute,
   } as any)
-
 const hiddenFolderLayoutsVisibleLayoutBarRoute =
-  hiddenFolderLayoutsVisibleLayoutBarImport.update({
+  hiddenFolderLayoutsVisibleLayoutBarRouteImport.update({
     id: '/bar',
     path: '/bar',
     getParentRoute: () => hiddenFolderLayoutsVisibleLayoutRoute,
   } as any)
-
 const hiddenFolderLayoutsHiddenLayoutFooRoute =
-  hiddenFolderLayoutsHiddenLayoutFooImport.update({
+  hiddenFolderLayoutsHiddenLayoutFooRouteImport.update({
     id: '/foo',
     path: '/foo',
     getParentRoute: () => hiddenFolderLayoutsHiddenLayoutRoute,
   } as any)
-
 const hiddenFolderLayoutsHiddenLayoutBarRoute =
-  hiddenFolderLayoutsHiddenLayoutBarImport.update({
+  hiddenFolderLayoutsHiddenLayoutBarRouteImport.update({
     id: '/bar',
     path: '/bar',
     getParentRoute: () => hiddenFolderLayoutsHiddenLayoutRoute,
   } as any)
 
-// Populate the FileRoutesByPath interface
+export interface FileRoutesByFullPath {
+  '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
+  '/steps': typeof StepsRoute
+  '/first-level': typeof hiddenFolderFirstLevelRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/pokemon/$id': typeof PokemonIdRoute
+  '/pokemon': typeof PokemonIndexRoute
+  '/layouts': typeof hiddenFolderLayoutsHiddenLayoutRouteWithChildren
+  '/layouts/visibleLayout': typeof hiddenFolderLayoutsVisibleLayoutRouteWithChildren
+  '/foo/bar/baz': typeof FooBarBazRoute
+  '/one/two/three': typeof OneTwoThreeRoute
+  '/layouts/bar': typeof hiddenFolderLayoutsHiddenLayoutBarRoute
+  '/layouts/foo': typeof hiddenFolderLayoutsHiddenLayoutFooRoute
+  '/layouts/visibleLayout/bar': typeof hiddenFolderLayoutsVisibleLayoutBarRoute
+  '/layouts/visibleLayout/foo': typeof hiddenFolderLayoutsVisibleLayoutFooRoute
+}
+export interface FileRoutesByTo {
+  '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
+  '/steps': typeof StepsRoute
+  '/first-level': typeof hiddenFolderFirstLevelRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/pokemon/$id': typeof PokemonIdRoute
+  '/pokemon': typeof PokemonIndexRoute
+  '/layouts': typeof hiddenFolderLayoutsHiddenLayoutRouteWithChildren
+  '/layouts/visibleLayout': typeof hiddenFolderLayoutsVisibleLayoutRouteWithChildren
+  '/foo/bar/baz': typeof FooBarBazRoute
+  '/one/two/three': typeof OneTwoThreeRoute
+  '/layouts/bar': typeof hiddenFolderLayoutsHiddenLayoutBarRoute
+  '/layouts/foo': typeof hiddenFolderLayoutsHiddenLayoutFooRoute
+  '/layouts/visibleLayout/bar': typeof hiddenFolderLayoutsVisibleLayoutBarRoute
+  '/layouts/visibleLayout/foo': typeof hiddenFolderLayoutsVisibleLayoutFooRoute
+}
+export interface FileRoutesById {
+  __root__: typeof rootRouteImport
+  '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
+  '/steps': typeof StepsRoute
+  '/(hidden-folder)/first-level': typeof hiddenFolderFirstLevelRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/pokemon/$id': typeof PokemonIdRoute
+  '/pokemon/': typeof PokemonIndexRoute
+  '/(hidden-folder)/layouts/_hiddenLayout': typeof hiddenFolderLayoutsHiddenLayoutRouteWithChildren
+  '/(hidden-folder)/layouts/visibleLayout': typeof hiddenFolderLayoutsVisibleLayoutRouteWithChildren
+  '/foo/bar/baz': typeof FooBarBazRoute
+  '/one/two/three': typeof OneTwoThreeRoute
+  '/(hidden-folder)/layouts/_hiddenLayout/bar': typeof hiddenFolderLayoutsHiddenLayoutBarRoute
+  '/(hidden-folder)/layouts/_hiddenLayout/foo': typeof hiddenFolderLayoutsHiddenLayoutFooRoute
+  '/(hidden-folder)/layouts/visibleLayout/bar': typeof hiddenFolderLayoutsVisibleLayoutBarRoute
+  '/(hidden-folder)/layouts/visibleLayout/foo': typeof hiddenFolderLayoutsVisibleLayoutFooRoute
+}
+export interface FileRouteTypes {
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/profile'
+    | '/search'
+    | '/steps'
+    | '/first-level'
+    | '/dashboard'
+    | '/pokemon/$id'
+    | '/pokemon'
+    | '/layouts'
+    | '/layouts/visibleLayout'
+    | '/foo/bar/baz'
+    | '/one/two/three'
+    | '/layouts/bar'
+    | '/layouts/foo'
+    | '/layouts/visibleLayout/bar'
+    | '/layouts/visibleLayout/foo'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/login'
+    | '/profile'
+    | '/search'
+    | '/steps'
+    | '/first-level'
+    | '/dashboard'
+    | '/pokemon/$id'
+    | '/pokemon'
+    | '/layouts'
+    | '/layouts/visibleLayout'
+    | '/foo/bar/baz'
+    | '/one/two/three'
+    | '/layouts/bar'
+    | '/layouts/foo'
+    | '/layouts/visibleLayout/bar'
+    | '/layouts/visibleLayout/foo'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/login'
+    | '/profile'
+    | '/search'
+    | '/steps'
+    | '/(hidden-folder)/first-level'
+    | '/_authenticated/dashboard'
+    | '/pokemon/$id'
+    | '/pokemon/'
+    | '/(hidden-folder)/layouts/_hiddenLayout'
+    | '/(hidden-folder)/layouts/visibleLayout'
+    | '/foo/bar/baz'
+    | '/one/two/three'
+    | '/(hidden-folder)/layouts/_hiddenLayout/bar'
+    | '/(hidden-folder)/layouts/_hiddenLayout/foo'
+    | '/(hidden-folder)/layouts/visibleLayout/bar'
+    | '/(hidden-folder)/layouts/visibleLayout/foo'
+  fileRoutesById: FileRoutesById
+}
+export interface RootRouteChildren {
+  IndexRoute: typeof IndexRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  ProfileRoute: typeof ProfileRoute
+  SearchRoute: typeof SearchRoute
+  StepsRoute: typeof StepsRoute
+  hiddenFolderFirstLevelRoute: typeof hiddenFolderFirstLevelRoute
+  PokemonIdRoute: typeof PokemonIdRoute
+  PokemonIndexRoute: typeof PokemonIndexRoute
+  hiddenFolderLayoutsHiddenLayoutRoute: typeof hiddenFolderLayoutsHiddenLayoutRouteWithChildren
+  hiddenFolderLayoutsVisibleLayoutRoute: typeof hiddenFolderLayoutsVisibleLayoutRouteWithChildren
+  FooBarBazRoute: typeof FooBarBazRoute
+  OneTwoThreeRoute: typeof OneTwoThreeRoute
+}
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/_authenticated': {
-      id: '/_authenticated'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof AuthenticatedImport
-      parentRoute: typeof rootRoute
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginImport
-      parentRoute: typeof rootRoute
-    }
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileImport
-      parentRoute: typeof rootRoute
+    '/steps': {
+      id: '/steps'
+      path: '/steps'
+      fullPath: '/steps'
+      preLoaderRoute: typeof StepsRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/search': {
       id: '/search'
       path: '/search'
       fullPath: '/search'
-      preLoaderRoute: typeof SearchImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/steps': {
-      id: '/steps'
-      path: '/steps'
-      fullPath: '/steps'
-      preLoaderRoute: typeof StepsImport
-      parentRoute: typeof rootRoute
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/(hidden-folder)/first-level': {
-      id: '/(hidden-folder)/first-level'
-      path: '/first-level'
-      fullPath: '/first-level'
-      preLoaderRoute: typeof hiddenFolderFirstLevelImport
-      parentRoute: typeof rootRoute
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/dashboard': {
-      id: '/_authenticated/dashboard'
-      path: '/dashboard'
-      fullPath: '/dashboard'
-      preLoaderRoute: typeof AuthenticatedDashboardImport
-      parentRoute: typeof AuthenticatedImport
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/pokemon/$id': {
-      id: '/pokemon/$id'
-      path: '/pokemon/$id'
-      fullPath: '/pokemon/$id'
-      preLoaderRoute: typeof PokemonIdImport
-      parentRoute: typeof rootRoute
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/pokemon/': {
       id: '/pokemon/'
       path: '/pokemon'
       fullPath: '/pokemon'
-      preLoaderRoute: typeof PokemonIndexImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof PokemonIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/(hidden-folder)/layouts': {
-      id: '/(hidden-folder)/layouts'
-      path: '/layouts'
-      fullPath: '/layouts'
-      preLoaderRoute: typeof hiddenFolderLayoutsImport
-      parentRoute: typeof rootRoute
+    '/pokemon/$id': {
+      id: '/pokemon/$id'
+      path: '/pokemon/$id'
+      fullPath: '/pokemon/$id'
+      preLoaderRoute: typeof PokemonIdRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/(hidden-folder)/layouts/_hiddenLayout': {
-      id: '/(hidden-folder)/layouts/_hiddenLayout'
-      path: '/layouts'
-      fullPath: '/layouts'
-      preLoaderRoute: typeof hiddenFolderLayoutsHiddenLayoutImport
-      parentRoute: typeof hiddenFolderLayoutsRoute
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
-    '/(hidden-folder)/layouts/visibleLayout': {
-      id: '/(hidden-folder)/layouts/visibleLayout'
-      path: '/visibleLayout'
-      fullPath: '/layouts/visibleLayout'
-      preLoaderRoute: typeof hiddenFolderLayoutsVisibleLayoutImport
-      parentRoute: typeof hiddenFolderLayoutsImport
-    }
-    '/foo/bar/baz': {
-      id: '/foo/bar/baz'
-      path: '/foo/bar/baz'
-      fullPath: '/foo/bar/baz'
-      preLoaderRoute: typeof FooBarBazImport
-      parentRoute: typeof rootRoute
+    '/(hidden-folder)/first-level': {
+      id: '/(hidden-folder)/first-level'
+      path: '/first-level'
+      fullPath: '/first-level'
+      preLoaderRoute: typeof hiddenFolderFirstLevelRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/one/two/three': {
       id: '/one/two/three'
       path: '/one/two/three'
       fullPath: '/one/two/three'
-      preLoaderRoute: typeof OneTwoThreeImport
-      parentRoute: typeof rootRoute
+      preLoaderRoute: typeof OneTwoThreeRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/(hidden-folder)/layouts/_hiddenLayout/bar': {
-      id: '/(hidden-folder)/layouts/_hiddenLayout/bar'
-      path: '/bar'
-      fullPath: '/layouts/bar'
-      preLoaderRoute: typeof hiddenFolderLayoutsHiddenLayoutBarImport
-      parentRoute: typeof hiddenFolderLayoutsHiddenLayoutImport
+    '/foo/bar/baz': {
+      id: '/foo/bar/baz'
+      path: '/foo/bar/baz'
+      fullPath: '/foo/bar/baz'
+      preLoaderRoute: typeof FooBarBazRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/(hidden-folder)/layouts/_hiddenLayout/foo': {
-      id: '/(hidden-folder)/layouts/_hiddenLayout/foo'
-      path: '/foo'
-      fullPath: '/layouts/foo'
-      preLoaderRoute: typeof hiddenFolderLayoutsHiddenLayoutFooImport
-      parentRoute: typeof hiddenFolderLayoutsHiddenLayoutImport
+    '/(hidden-folder)/layouts/visibleLayout': {
+      id: '/(hidden-folder)/layouts/visibleLayout'
+      path: '/layouts/visibleLayout'
+      fullPath: '/layouts/visibleLayout'
+      preLoaderRoute: typeof hiddenFolderLayoutsVisibleLayoutRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/(hidden-folder)/layouts/visibleLayout/bar': {
-      id: '/(hidden-folder)/layouts/visibleLayout/bar'
-      path: '/bar'
-      fullPath: '/layouts/visibleLayout/bar'
-      preLoaderRoute: typeof hiddenFolderLayoutsVisibleLayoutBarImport
-      parentRoute: typeof hiddenFolderLayoutsVisibleLayoutImport
+    '/(hidden-folder)/layouts/_hiddenLayout': {
+      id: '/(hidden-folder)/layouts/_hiddenLayout'
+      path: '/layouts'
+      fullPath: '/layouts'
+      preLoaderRoute: typeof hiddenFolderLayoutsHiddenLayoutRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/(hidden-folder)/layouts/visibleLayout/foo': {
       id: '/(hidden-folder)/layouts/visibleLayout/foo'
       path: '/foo'
       fullPath: '/layouts/visibleLayout/foo'
-      preLoaderRoute: typeof hiddenFolderLayoutsVisibleLayoutFooImport
-      parentRoute: typeof hiddenFolderLayoutsVisibleLayoutImport
+      preLoaderRoute: typeof hiddenFolderLayoutsVisibleLayoutFooRouteImport
+      parentRoute: typeof hiddenFolderLayoutsVisibleLayoutRoute
+    }
+    '/(hidden-folder)/layouts/visibleLayout/bar': {
+      id: '/(hidden-folder)/layouts/visibleLayout/bar'
+      path: '/bar'
+      fullPath: '/layouts/visibleLayout/bar'
+      preLoaderRoute: typeof hiddenFolderLayoutsVisibleLayoutBarRouteImport
+      parentRoute: typeof hiddenFolderLayoutsVisibleLayoutRoute
+    }
+    '/(hidden-folder)/layouts/_hiddenLayout/foo': {
+      id: '/(hidden-folder)/layouts/_hiddenLayout/foo'
+      path: '/foo'
+      fullPath: '/layouts/foo'
+      preLoaderRoute: typeof hiddenFolderLayoutsHiddenLayoutFooRouteImport
+      parentRoute: typeof hiddenFolderLayoutsHiddenLayoutRoute
+    }
+    '/(hidden-folder)/layouts/_hiddenLayout/bar': {
+      id: '/(hidden-folder)/layouts/_hiddenLayout/bar'
+      path: '/bar'
+      fullPath: '/layouts/bar'
+      preLoaderRoute: typeof hiddenFolderLayoutsHiddenLayoutBarRouteImport
+      parentRoute: typeof hiddenFolderLayoutsHiddenLayoutRoute
     }
   }
 }
-
-// Create and export the route tree
 
 interface AuthenticatedRouteChildren {
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
@@ -346,166 +439,6 @@ const hiddenFolderLayoutsVisibleLayoutRouteWithChildren =
     hiddenFolderLayoutsVisibleLayoutRouteChildren,
   )
 
-interface hiddenFolderLayoutsRouteChildren {
-  hiddenFolderLayoutsHiddenLayoutRoute: typeof hiddenFolderLayoutsHiddenLayoutRouteWithChildren
-  hiddenFolderLayoutsVisibleLayoutRoute: typeof hiddenFolderLayoutsVisibleLayoutRouteWithChildren
-}
-
-const hiddenFolderLayoutsRouteChildren: hiddenFolderLayoutsRouteChildren = {
-  hiddenFolderLayoutsHiddenLayoutRoute:
-    hiddenFolderLayoutsHiddenLayoutRouteWithChildren,
-  hiddenFolderLayoutsVisibleLayoutRoute:
-    hiddenFolderLayoutsVisibleLayoutRouteWithChildren,
-}
-
-const hiddenFolderLayoutsRouteWithChildren =
-  hiddenFolderLayoutsRoute._addFileChildren(hiddenFolderLayoutsRouteChildren)
-
-export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '': typeof AuthenticatedRouteWithChildren
-  '/login': typeof LoginRoute
-  '/profile': typeof ProfileRoute
-  '/search': typeof SearchRoute
-  '/steps': typeof StepsRoute
-  '/first-level': typeof hiddenFolderFirstLevelRoute
-  '/dashboard': typeof AuthenticatedDashboardRoute
-  '/pokemon/$id': typeof PokemonIdRoute
-  '/pokemon': typeof PokemonIndexRoute
-  '/layouts': typeof hiddenFolderLayoutsHiddenLayoutRouteWithChildren
-  '/layouts/visibleLayout': typeof hiddenFolderLayoutsVisibleLayoutRouteWithChildren
-  '/foo/bar/baz': typeof FooBarBazRoute
-  '/one/two/three': typeof OneTwoThreeRoute
-  '/layouts/bar': typeof hiddenFolderLayoutsHiddenLayoutBarRoute
-  '/layouts/foo': typeof hiddenFolderLayoutsHiddenLayoutFooRoute
-  '/layouts/visibleLayout/bar': typeof hiddenFolderLayoutsVisibleLayoutBarRoute
-  '/layouts/visibleLayout/foo': typeof hiddenFolderLayoutsVisibleLayoutFooRoute
-}
-
-export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '': typeof AuthenticatedRouteWithChildren
-  '/login': typeof LoginRoute
-  '/profile': typeof ProfileRoute
-  '/search': typeof SearchRoute
-  '/steps': typeof StepsRoute
-  '/first-level': typeof hiddenFolderFirstLevelRoute
-  '/dashboard': typeof AuthenticatedDashboardRoute
-  '/pokemon/$id': typeof PokemonIdRoute
-  '/pokemon': typeof PokemonIndexRoute
-  '/layouts': typeof hiddenFolderLayoutsHiddenLayoutRouteWithChildren
-  '/layouts/visibleLayout': typeof hiddenFolderLayoutsVisibleLayoutRouteWithChildren
-  '/foo/bar/baz': typeof FooBarBazRoute
-  '/one/two/three': typeof OneTwoThreeRoute
-  '/layouts/bar': typeof hiddenFolderLayoutsHiddenLayoutBarRoute
-  '/layouts/foo': typeof hiddenFolderLayoutsHiddenLayoutFooRoute
-  '/layouts/visibleLayout/bar': typeof hiddenFolderLayoutsVisibleLayoutBarRoute
-  '/layouts/visibleLayout/foo': typeof hiddenFolderLayoutsVisibleLayoutFooRoute
-}
-
-export interface FileRoutesById {
-  __root__: typeof rootRoute
-  '/': typeof IndexRoute
-  '/_authenticated': typeof AuthenticatedRouteWithChildren
-  '/login': typeof LoginRoute
-  '/profile': typeof ProfileRoute
-  '/search': typeof SearchRoute
-  '/steps': typeof StepsRoute
-  '/(hidden-folder)/first-level': typeof hiddenFolderFirstLevelRoute
-  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
-  '/pokemon/$id': typeof PokemonIdRoute
-  '/pokemon/': typeof PokemonIndexRoute
-  '/(hidden-folder)/layouts': typeof hiddenFolderLayoutsRouteWithChildren
-  '/(hidden-folder)/layouts/_hiddenLayout': typeof hiddenFolderLayoutsHiddenLayoutRouteWithChildren
-  '/(hidden-folder)/layouts/visibleLayout': typeof hiddenFolderLayoutsVisibleLayoutRouteWithChildren
-  '/foo/bar/baz': typeof FooBarBazRoute
-  '/one/two/three': typeof OneTwoThreeRoute
-  '/(hidden-folder)/layouts/_hiddenLayout/bar': typeof hiddenFolderLayoutsHiddenLayoutBarRoute
-  '/(hidden-folder)/layouts/_hiddenLayout/foo': typeof hiddenFolderLayoutsHiddenLayoutFooRoute
-  '/(hidden-folder)/layouts/visibleLayout/bar': typeof hiddenFolderLayoutsVisibleLayoutBarRoute
-  '/(hidden-folder)/layouts/visibleLayout/foo': typeof hiddenFolderLayoutsVisibleLayoutFooRoute
-}
-
-export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | ''
-    | '/login'
-    | '/profile'
-    | '/search'
-    | '/steps'
-    | '/first-level'
-    | '/dashboard'
-    | '/pokemon/$id'
-    | '/pokemon'
-    | '/layouts'
-    | '/layouts/visibleLayout'
-    | '/foo/bar/baz'
-    | '/one/two/three'
-    | '/layouts/bar'
-    | '/layouts/foo'
-    | '/layouts/visibleLayout/bar'
-    | '/layouts/visibleLayout/foo'
-  fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | ''
-    | '/login'
-    | '/profile'
-    | '/search'
-    | '/steps'
-    | '/first-level'
-    | '/dashboard'
-    | '/pokemon/$id'
-    | '/pokemon'
-    | '/layouts'
-    | '/layouts/visibleLayout'
-    | '/foo/bar/baz'
-    | '/one/two/three'
-    | '/layouts/bar'
-    | '/layouts/foo'
-    | '/layouts/visibleLayout/bar'
-    | '/layouts/visibleLayout/foo'
-  id:
-    | '__root__'
-    | '/'
-    | '/_authenticated'
-    | '/login'
-    | '/profile'
-    | '/search'
-    | '/steps'
-    | '/(hidden-folder)/first-level'
-    | '/_authenticated/dashboard'
-    | '/pokemon/$id'
-    | '/pokemon/'
-    | '/(hidden-folder)/layouts'
-    | '/(hidden-folder)/layouts/_hiddenLayout'
-    | '/(hidden-folder)/layouts/visibleLayout'
-    | '/foo/bar/baz'
-    | '/one/two/three'
-    | '/(hidden-folder)/layouts/_hiddenLayout/bar'
-    | '/(hidden-folder)/layouts/_hiddenLayout/foo'
-    | '/(hidden-folder)/layouts/visibleLayout/bar'
-    | '/(hidden-folder)/layouts/visibleLayout/foo'
-  fileRoutesById: FileRoutesById
-}
-
-export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
-  LoginRoute: typeof LoginRoute
-  ProfileRoute: typeof ProfileRoute
-  SearchRoute: typeof SearchRoute
-  StepsRoute: typeof StepsRoute
-  hiddenFolderFirstLevelRoute: typeof hiddenFolderFirstLevelRoute
-  PokemonIdRoute: typeof PokemonIdRoute
-  PokemonIndexRoute: typeof PokemonIndexRoute
-  hiddenFolderLayoutsRoute: typeof hiddenFolderLayoutsRouteWithChildren
-  FooBarBazRoute: typeof FooBarBazRoute
-  OneTwoThreeRoute: typeof OneTwoThreeRoute
-}
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
@@ -516,114 +449,13 @@ const rootRouteChildren: RootRouteChildren = {
   hiddenFolderFirstLevelRoute: hiddenFolderFirstLevelRoute,
   PokemonIdRoute: PokemonIdRoute,
   PokemonIndexRoute: PokemonIndexRoute,
-  hiddenFolderLayoutsRoute: hiddenFolderLayoutsRouteWithChildren,
+  hiddenFolderLayoutsHiddenLayoutRoute:
+    hiddenFolderLayoutsHiddenLayoutRouteWithChildren,
+  hiddenFolderLayoutsVisibleLayoutRoute:
+    hiddenFolderLayoutsVisibleLayoutRouteWithChildren,
   FooBarBazRoute: FooBarBazRoute,
   OneTwoThreeRoute: OneTwoThreeRoute,
 }
-
-export const routeTree = rootRoute
+export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.tsx",
-      "children": [
-        "/",
-        "/_authenticated",
-        "/login",
-        "/profile",
-        "/search",
-        "/steps",
-        "/(hidden-folder)/first-level",
-        "/pokemon/$id",
-        "/pokemon/",
-        "/(hidden-folder)/layouts",
-        "/foo/bar/baz",
-        "/one/two/three"
-      ]
-    },
-    "/": {
-      "filePath": "index.tsx"
-    },
-    "/_authenticated": {
-      "filePath": "_authenticated.tsx",
-      "children": [
-        "/_authenticated/dashboard"
-      ]
-    },
-    "/login": {
-      "filePath": "login.tsx"
-    },
-    "/profile": {
-      "filePath": "profile.tsx"
-    },
-    "/search": {
-      "filePath": "search.tsx"
-    },
-    "/steps": {
-      "filePath": "steps.tsx"
-    },
-    "/(hidden-folder)/first-level": {
-      "filePath": "(hidden-folder)/first-level.tsx"
-    },
-    "/_authenticated/dashboard": {
-      "filePath": "_authenticated/dashboard.tsx",
-      "parent": "/_authenticated"
-    },
-    "/pokemon/$id": {
-      "filePath": "pokemon/$id.tsx"
-    },
-    "/pokemon/": {
-      "filePath": "pokemon/index.tsx"
-    },
-    "/(hidden-folder)/layouts": {
-      "filePath": "(hidden-folder)/layouts",
-      "children": [
-        "/(hidden-folder)/layouts/_hiddenLayout",
-        "/(hidden-folder)/layouts/visibleLayout"
-      ]
-    },
-    "/(hidden-folder)/layouts/_hiddenLayout": {
-      "filePath": "(hidden-folder)/layouts/_hiddenLayout.tsx",
-      "parent": "/(hidden-folder)/layouts",
-      "children": [
-        "/(hidden-folder)/layouts/_hiddenLayout/bar",
-        "/(hidden-folder)/layouts/_hiddenLayout/foo"
-      ]
-    },
-    "/(hidden-folder)/layouts/visibleLayout": {
-      "filePath": "(hidden-folder)/layouts/visibleLayout.tsx",
-      "parent": "/(hidden-folder)/layouts",
-      "children": [
-        "/(hidden-folder)/layouts/visibleLayout/bar",
-        "/(hidden-folder)/layouts/visibleLayout/foo"
-      ]
-    },
-    "/foo/bar/baz": {
-      "filePath": "foo/bar/baz.tsx"
-    },
-    "/one/two/three": {
-      "filePath": "one.two.three.tsx"
-    },
-    "/(hidden-folder)/layouts/_hiddenLayout/bar": {
-      "filePath": "(hidden-folder)/layouts/_hiddenLayout/bar.tsx",
-      "parent": "/(hidden-folder)/layouts/_hiddenLayout"
-    },
-    "/(hidden-folder)/layouts/_hiddenLayout/foo": {
-      "filePath": "(hidden-folder)/layouts/_hiddenLayout/foo.tsx",
-      "parent": "/(hidden-folder)/layouts/_hiddenLayout"
-    },
-    "/(hidden-folder)/layouts/visibleLayout/bar": {
-      "filePath": "(hidden-folder)/layouts/visibleLayout/bar.tsx",
-      "parent": "/(hidden-folder)/layouts/visibleLayout"
-    },
-    "/(hidden-folder)/layouts/visibleLayout/foo": {
-      "filePath": "(hidden-folder)/layouts/visibleLayout/foo.tsx",
-      "parent": "/(hidden-folder)/layouts/visibleLayout"
-    }
-  }
-}
-ROUTE_MANIFEST_END */
