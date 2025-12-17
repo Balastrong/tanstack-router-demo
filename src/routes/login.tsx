@@ -1,5 +1,5 @@
-import { createFileRoute, useRouter } from "@tanstack/react-router";
-import { isAuthenticated, signIn, signOut } from "../utils/auth";
+import { useAuth } from "@/hooks/useAuth";
+import { createFileRoute } from "@tanstack/react-router";
 import Typography from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
 
@@ -8,21 +8,19 @@ export const Route = createFileRoute("/login")({
 });
 
 function Login() {
-  const router = useRouter();
+  const { isLogged, signIn, signOut } = useAuth();
+  const loggedIn = isLogged();
 
   return (
     <div className="flex flex-col gap-2">
       <Typography variant={"h2"}>Login</Typography>
-      {isAuthenticated() ? (
+      {loggedIn ? (
         <>
           <p>Hello user!</p>
           <Button
             variant={"destructive"}
             size={"sm"}
-            onClick={async () => {
-              signOut();
-              router.invalidate();
-            }}
+            onClick={signOut}
             className="w-[110px]"
           >
             Sign out
@@ -33,10 +31,7 @@ function Login() {
           <p>Who are you?</p>
           <Button
             size={"sm"}
-            onClick={async () => {
-              signIn();
-              router.invalidate();
-            }}
+            onClick={signIn}
             className="w-[110px]"
           >
             Sign in

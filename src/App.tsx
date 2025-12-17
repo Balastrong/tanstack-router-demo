@@ -19,6 +19,7 @@ const router = createRouter({
   context: { authentication: undefined! },
   defaultNotFoundComponent: () => <div>Global Not Found :(</div>,
   routeMasks: [stepsMask],
+  defaultPreload: "intent"
 });
 
 declare module "@tanstack/react-router" {

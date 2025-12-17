@@ -1,13 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
-import { createFileRoute, useRouter } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
   component: Dashboard,
 });
 
 function Dashboard() {
-  const router = useRouter();
   const { signOut } = useAuth();
 
   return (
@@ -16,10 +15,7 @@ function Dashboard() {
       <Button
         variant={"destructive"}
         size={"sm"}
-        onClick={async () => {
-          signOut();
-          router.invalidate();
-        }}
+        onClick={signOut}
         className="w-[110px]"
       >
         Sign out
