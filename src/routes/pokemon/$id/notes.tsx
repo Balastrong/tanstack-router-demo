@@ -2,6 +2,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/pokemon/$id/notes")({
+  staticData: { breadcrumb: "Notes" },
   component: RouteComponent,
 });
 

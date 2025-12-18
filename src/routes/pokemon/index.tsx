@@ -1,6 +1,6 @@
+import Typography from "@/components/ui/typography";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { getPokemonList } from "../../api/pokemon";
-import Typography from "@/components/ui/typography";
 
 export const Route = createFileRoute("/pokemon/")({
   component: PokemonList,
@@ -18,9 +18,7 @@ function PokemonList() {
             <Link
               to={"/pokemon/$id"}
               className="text-blue-500"
-              params={{
-                id: pokemon.id,
-              }}
+              params={{ id: pokemon.id }}
             >
               {pokemon.name}
             </Link>

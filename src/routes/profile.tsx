@@ -17,19 +17,16 @@ export const Route = createFileRoute("/profile")({
   beforeLoad: ({ context }) => {
     const { isLogged } = context.authentication;
     if (!isLogged()) {
-      throw redirect({
-        to: "/login",
-      });
+      throw redirect({ to: "/login" });
     }
   },
+  staticData: { breadcrumb: "Profile" },
   component: Profile,
 });
 
 function Profile() {
   const [name, setName] = useState("");
-  const { proceed, reset, status } = useBlocker({
-    condition: !!name,
-  });
+  const { proceed, reset, status } = useBlocker({ condition: !!name });
 
   return (
     <div>

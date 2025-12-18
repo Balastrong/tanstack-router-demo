@@ -13,11 +13,13 @@ import { Route as StepsRouteImport } from './routes/steps'
 import { Route as SearchRouteImport } from './routes/search'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as PokemonRouteRouteImport } from './routes/pokemon/route'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PokemonIndexRouteImport } from './routes/pokemon/index'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as hiddenFolderFirstLevelRouteImport } from './routes/(hidden-folder)/first-level'
+import { Route as PokemonIdRouteRouteImport } from './routes/pokemon/$id/route'
 import { Route as PokemonIdIndexRouteImport } from './routes/pokemon/$id/index'
 import { Route as PokemonIdNotesRouteImport } from './routes/pokemon/$id/notes'
 import { Route as OneTwoThreeRouteImport } from './routes/one.two.three'
@@ -49,6 +51,11 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PokemonRouteRoute = PokemonRouteRouteImport.update({
+  id: '/pokemon',
+  path: '/pokemon',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
@@ -59,9 +66,9 @@ const IndexRoute = IndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const PokemonIndexRoute = PokemonIndexRouteImport.update({
-  id: '/pokemon/',
-  path: '/pokemon/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => PokemonRouteRoute,
 } as any)
 const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
   id: '/dashboard',
@@ -73,15 +80,20 @@ const hiddenFolderFirstLevelRoute = hiddenFolderFirstLevelRouteImport.update({
   path: '/first-level',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PokemonIdRouteRoute = PokemonIdRouteRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => PokemonRouteRoute,
+} as any)
 const PokemonIdIndexRoute = PokemonIdIndexRouteImport.update({
-  id: '/pokemon/$id/',
-  path: '/pokemon/$id/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => PokemonIdRouteRoute,
 } as any)
 const PokemonIdNotesRoute = PokemonIdNotesRouteImport.update({
-  id: '/pokemon/$id/notes',
-  path: '/pokemon/$id/notes',
-  getParentRoute: () => rootRouteImport,
+  id: '/notes',
+  path: '/notes',
+  getParentRoute: () => PokemonIdRouteRoute,
 } as any)
 const OneTwoThreeRoute = OneTwoThreeRouteImport.update({
   id: '/one/two/three',
@@ -132,19 +144,21 @@ const hiddenFolderLayoutsHiddenLayoutBarRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/pokemon': typeof PokemonRouteRouteWithChildren
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
   '/steps': typeof StepsRoute
+  '/pokemon/$id': typeof PokemonIdRouteRouteWithChildren
   '/first-level': typeof hiddenFolderFirstLevelRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
-  '/pokemon': typeof PokemonIndexRoute
+  '/pokemon/': typeof PokemonIndexRoute
   '/layouts': typeof hiddenFolderLayoutsHiddenLayoutRouteWithChildren
   '/layouts/visibleLayout': typeof hiddenFolderLayoutsVisibleLayoutRouteWithChildren
   '/foo/bar/baz': typeof FooBarBazRoute
   '/one/two/three': typeof OneTwoThreeRoute
   '/pokemon/$id/notes': typeof PokemonIdNotesRoute
-  '/pokemon/$id': typeof PokemonIdIndexRoute
+  '/pokemon/$id/': typeof PokemonIdIndexRoute
   '/layouts/bar': typeof hiddenFolderLayoutsHiddenLayoutBarRoute
   '/layouts/foo': typeof hiddenFolderLayoutsHiddenLayoutFooRoute
   '/layouts/visibleLayout/bar': typeof hiddenFolderLayoutsVisibleLayoutBarRoute
@@ -174,10 +188,12 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/pokemon': typeof PokemonRouteRouteWithChildren
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/search': typeof SearchRoute
   '/steps': typeof StepsRoute
+  '/pokemon/$id': typeof PokemonIdRouteRouteWithChildren
   '/(hidden-folder)/first-level': typeof hiddenFolderFirstLevelRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/pokemon/': typeof PokemonIndexRoute
@@ -196,19 +212,21 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/pokemon'
     | '/login'
     | '/profile'
     | '/search'
     | '/steps'
+    | '/pokemon/$id'
     | '/first-level'
     | '/dashboard'
-    | '/pokemon'
+    | '/pokemon/'
     | '/layouts'
     | '/layouts/visibleLayout'
     | '/foo/bar/baz'
     | '/one/two/three'
     | '/pokemon/$id/notes'
-    | '/pokemon/$id'
+    | '/pokemon/$id/'
     | '/layouts/bar'
     | '/layouts/foo'
     | '/layouts/visibleLayout/bar'
@@ -237,10 +255,12 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/_authenticated'
+    | '/pokemon'
     | '/login'
     | '/profile'
     | '/search'
     | '/steps'
+    | '/pokemon/$id'
     | '/(hidden-folder)/first-level'
     | '/_authenticated/dashboard'
     | '/pokemon/'
@@ -259,18 +279,16 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  PokemonRouteRoute: typeof PokemonRouteRouteWithChildren
   LoginRoute: typeof LoginRoute
   ProfileRoute: typeof ProfileRoute
   SearchRoute: typeof SearchRoute
   StepsRoute: typeof StepsRoute
   hiddenFolderFirstLevelRoute: typeof hiddenFolderFirstLevelRoute
-  PokemonIndexRoute: typeof PokemonIndexRoute
   hiddenFolderLayoutsHiddenLayoutRoute: typeof hiddenFolderLayoutsHiddenLayoutRouteWithChildren
   hiddenFolderLayoutsVisibleLayoutRoute: typeof hiddenFolderLayoutsVisibleLayoutRouteWithChildren
   FooBarBazRoute: typeof FooBarBazRoute
   OneTwoThreeRoute: typeof OneTwoThreeRoute
-  PokemonIdNotesRoute: typeof PokemonIdNotesRoute
-  PokemonIdIndexRoute: typeof PokemonIdIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -303,6 +321,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pokemon': {
+      id: '/pokemon'
+      path: '/pokemon'
+      fullPath: '/pokemon'
+      preLoaderRoute: typeof PokemonRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated': {
       id: '/_authenticated'
       path: ''
@@ -319,10 +344,10 @@ declare module '@tanstack/react-router' {
     }
     '/pokemon/': {
       id: '/pokemon/'
-      path: '/pokemon'
-      fullPath: '/pokemon'
+      path: '/'
+      fullPath: '/pokemon/'
       preLoaderRoute: typeof PokemonIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PokemonRouteRoute
     }
     '/_authenticated/dashboard': {
       id: '/_authenticated/dashboard'
@@ -338,19 +363,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof hiddenFolderFirstLevelRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pokemon/$id': {
+      id: '/pokemon/$id'
+      path: '/$id'
+      fullPath: '/pokemon/$id'
+      preLoaderRoute: typeof PokemonIdRouteRouteImport
+      parentRoute: typeof PokemonRouteRoute
+    }
     '/pokemon/$id/': {
       id: '/pokemon/$id/'
-      path: '/pokemon/$id'
-      fullPath: '/pokemon/$id'
+      path: '/'
+      fullPath: '/pokemon/$id/'
       preLoaderRoute: typeof PokemonIdIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PokemonIdRouteRoute
     }
     '/pokemon/$id/notes': {
       id: '/pokemon/$id/notes'
-      path: '/pokemon/$id/notes'
+      path: '/notes'
       fullPath: '/pokemon/$id/notes'
       preLoaderRoute: typeof PokemonIdNotesRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof PokemonIdRouteRoute
     }
     '/one/two/three': {
       id: '/one/two/three'
@@ -422,6 +454,34 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface PokemonIdRouteRouteChildren {
+  PokemonIdNotesRoute: typeof PokemonIdNotesRoute
+  PokemonIdIndexRoute: typeof PokemonIdIndexRoute
+}
+
+const PokemonIdRouteRouteChildren: PokemonIdRouteRouteChildren = {
+  PokemonIdNotesRoute: PokemonIdNotesRoute,
+  PokemonIdIndexRoute: PokemonIdIndexRoute,
+}
+
+const PokemonIdRouteRouteWithChildren = PokemonIdRouteRoute._addFileChildren(
+  PokemonIdRouteRouteChildren,
+)
+
+interface PokemonRouteRouteChildren {
+  PokemonIdRouteRoute: typeof PokemonIdRouteRouteWithChildren
+  PokemonIndexRoute: typeof PokemonIndexRoute
+}
+
+const PokemonRouteRouteChildren: PokemonRouteRouteChildren = {
+  PokemonIdRouteRoute: PokemonIdRouteRouteWithChildren,
+  PokemonIndexRoute: PokemonIndexRoute,
+}
+
+const PokemonRouteRouteWithChildren = PokemonRouteRoute._addFileChildren(
+  PokemonRouteRouteChildren,
+)
+
 interface hiddenFolderLayoutsHiddenLayoutRouteChildren {
   hiddenFolderLayoutsHiddenLayoutBarRoute: typeof hiddenFolderLayoutsHiddenLayoutBarRoute
   hiddenFolderLayoutsHiddenLayoutFooRoute: typeof hiddenFolderLayoutsHiddenLayoutFooRoute
@@ -461,20 +521,18 @@ const hiddenFolderLayoutsVisibleLayoutRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  PokemonRouteRoute: PokemonRouteRouteWithChildren,
   LoginRoute: LoginRoute,
   ProfileRoute: ProfileRoute,
   SearchRoute: SearchRoute,
   StepsRoute: StepsRoute,
   hiddenFolderFirstLevelRoute: hiddenFolderFirstLevelRoute,
-  PokemonIndexRoute: PokemonIndexRoute,
   hiddenFolderLayoutsHiddenLayoutRoute:
     hiddenFolderLayoutsHiddenLayoutRouteWithChildren,
   hiddenFolderLayoutsVisibleLayoutRoute:
     hiddenFolderLayoutsVisibleLayoutRouteWithChildren,
   FooBarBazRoute: FooBarBazRoute,
   OneTwoThreeRoute: OneTwoThreeRoute,
-  PokemonIdNotesRoute: PokemonIdNotesRoute,
-  PokemonIdIndexRoute: PokemonIdIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -6,17 +6,21 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const LAST_STEP = 3;
 
+type StepsSearchParams = { username: string; step?: number };
+
 export const Route = createFileRoute("/steps")({
   component: Steps,
-  validateSearch: (
-    search: Record<string, unknown>
-  ): { username: string; step?: number } => {
+  validateSearch: (search: Record<string, unknown>): StepsSearchParams => {
     const step = Number(search.step);
 
     return {
       step: isNaN(step) ? 0 : Math.max(Math.min(LAST_STEP, step), 0),
       username: search.username ? String(search.username) : "Guest",
     };
+  },
+  staticData: {
+    breadcrumb: ({ search }: { search: StepsSearchParams }) =>
+      search.step ? ["Steps", `${search.step}`] : "Steps",
   },
 });
 

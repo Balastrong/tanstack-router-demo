@@ -23,6 +23,7 @@ type ItemFilters = v.Output<typeof ItemFilters>;
 
 export const Route = createFileRoute("/search")({
   validateSearch: (search) => v.parse(ItemFilters, search),
+  staticData: { breadcrumb: "Search" },
   component: Search,
 });
 

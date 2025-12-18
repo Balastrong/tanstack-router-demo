@@ -1,9 +1,10 @@
+import { Button } from "@/components/ui/button";
+import Typography from "@/components/ui/typography";
 import { useAuth } from "@/hooks/useAuth";
 import { createFileRoute } from "@tanstack/react-router";
-import Typography from "@/components/ui/typography";
-import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/login")({
+  staticData: { breadcrumb: "Login" },
   component: Login,
 });
 
@@ -29,11 +30,7 @@ function Login() {
       ) : (
         <>
           <p>Who are you?</p>
-          <Button
-            size={"sm"}
-            onClick={signIn}
-            className="w-[110px]"
-          >
+          <Button size={"sm"} onClick={signIn} className="w-[110px]">
             Sign in
           </Button>
         </>

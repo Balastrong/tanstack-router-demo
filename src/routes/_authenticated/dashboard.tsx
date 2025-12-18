@@ -3,6 +3,9 @@ import { useAuth } from "@/hooks/useAuth";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/_authenticated/dashboard")({
+  staticData: {
+    breadcrumb: ["Private", "Dashboard"],
+  },
   component: Dashboard,
 });
 
